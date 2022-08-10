@@ -7,13 +7,25 @@ app.get('/students',(req,res)=>{
 })
 
 app.post('/students', (req, res) => {
-    const student = {
-      name: req.body.name,
-    }
+    const student = req.body
+    const { name } = req.name
+    // {
+    //   name: req.body.name,
+    // }
+    
+    const doublon = students.find(student=>{
+        return student.name === name
+       } )
+   
+       if (!doublon){
+         students.push(student)
+         res.json(student)
+       }else{
+         res.status(409).send("student already exists")
+       }
+    // students.push(student)
   
-    students.push(student)
-  
-    res.json(student)
+    // res.json(student)
   })
 
 module.exports = app

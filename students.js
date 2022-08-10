@@ -1,5 +1,7 @@
 const students = [
-
+{
+    name: "Jacky"
+}
 
 ]
 
